@@ -1,0 +1,8 @@
+region = "us-east-2"
+environment = "Development"
+vpc_id = "vpc-bbf134d0"
+instance_type = "t2.micro"
+instance_ami = "ami-00399ec92321828f5"
+keyname = "jump-server-key"
+instance_name1 = "jenkins-mater"
+instance_name2 = "jenkins-slave"

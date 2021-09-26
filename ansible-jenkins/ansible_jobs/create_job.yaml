@@ -1,0 +1,24 @@
+---
+- hosts: localhost
+  become: yes
+
+  tasks:
+    - name: Create Folder
+      file:
+        dest: /var/lib/jenkins/jobs/spring_boot
+        state: directory
+        mode: 0755
+        owner: jenkins
+
+    - name: Copy Config File
+      copy:
+        src: ./templates/config.xml
+        dest: /var/lib/jenkins/jobs/spring_boot/config.xml
+        owner: jenkins
+        group: jenkins
+        mode: 0644
+
+
+    - name: Jenkins | Forced restart in case there was admin password reset
+      service: name=jenkins state=restarted
+      become: yes
